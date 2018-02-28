@@ -1,0 +1,9 @@
+Django
+psycopg2
+Pillow
+django-storages
+boto
+django-registration
+django-sslserver
+boto3
+watchtower

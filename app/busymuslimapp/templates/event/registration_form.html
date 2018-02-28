@@ -1,0 +1,58 @@
+{% load static %}
+{% load i18n %}
+
+<head>
+    <title>Register</title>
+    <link href="{% static "css/register.css" %}"  rel="stylesheet">
+    <link href="{% static "css/jquery-ui-min.css" %}"  rel="stylesheet">
+    <link href="{% static "css/jquery-ui.theme.min.css" %}"  rel="stylesheet">
+    <script src="{% static "vendor/jquery/jquery.js" %}"></script>
+    <script src="{% static "vendor/jquery/jquery.formset.js" %}"></script>
+    <script src="{% static "vendor/jquery/jquery-ui.min.js" %}"></script>
+    <script type="text/javascript">
+        $(function() {
+            $(".inline.{{ children_form.prefix }}").formset({
+                prefix: "{{ children_form.prefix }}",
+            })
+        })
+  $(function() {
+    $( ".datepicker" ).datepicker({
+      changeMonth: true,
+      changeYear: true,
+      yearRange: "1900:2012",
+      // You can put more options here.
+    });
+  });
+    </script>
+</head>
+
+{% block content %}
+<div class="form">
+<form method="post" action=".">
+  <h1>Sign Up</h1>
+  {% csrf_token %}
+  <legend><span class="number">1</span>Event info</legend>
+  {{ event_form.as_p }}
+  <fieldset>
+                <legend><span class="number">2</span>Dependents info</legend>
+                {{ children_form.management_form }}
+                {{ children_form.non_form_errors }}
+                {% for form in children_form %}
+                    {{ form.id }}
+                    <div class="inline {{ children_form.prefix }}">
+                        {{ form.name.errors }}
+                        {{ form.name.label_tag }}
+                        {{ form.name }}
+                        {{ form.gender.errors }}
+                        {{ form.gender.label_tag }}
+                        {{ form.gender }}
+                        {{ form.date_of_birth.errors }}
+                        {{ form.date_of_birth.label_tag }}
+                        {{ form.date_of_birth }}
+                    </div>
+                {% endfor %}
+  </fieldset>
+  <input type="submit" value="{% trans 'Submit' %}" />
+</form>
+<div class="form">
+{% endblock %}

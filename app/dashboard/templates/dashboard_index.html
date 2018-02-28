@@ -1,0 +1,165 @@
+{% extends 'dashboard_base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="card p-4">
+                            <div class="card-body d-flex justify-content-between align-items-center">
+                              <a href="people/">
+                                <div>
+                                    <span class="h4 d-block font-weight-normal mb-2">{{total_users  }}</span>
+                                    <span class="font-weight-light">Total Users</span>
+                                </div>
+                              </a>
+                                <div class="h2 text-muted">
+                                    <i class="icon icon-people"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="card p-4">
+                            <div class="card-body d-flex justify-content-between align-items-center">
+                                <a href="people/absent/180">
+                                  <div>
+                                      <span class="h4 d-block font-weight-normal mb-2">{{missing_for_6_month}}</span>
+                                      <span class="font-weight-light">Missing for 6 month</span>
+                                  </div>
+                                </a>
+                                <div class="h2 text-muted">
+                                    <i class="icon icon-people" style="color: red;"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="card p-4">
+                            <div class="card-body d-flex justify-content-between align-items-center">
+                              <a href="people/absent/30">
+                                <div>
+                                    <span class="h4 d-block font-weight-normal mb-2">{{missing_for_a_month}}</span>
+                                    <span class="font-weight-light">Missing for a month</span>
+                                </div>
+                              </a>
+                                <div class="h2 text-muted">
+                                    <i class="icon icon-people" style="color:orange"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="card p-4">
+                            <div class="card-body d-flex justify-content-between align-items-center">
+                              <a href="people/absent/14">
+                                <div>
+                                    <span class="h4 d-block font-weight-normal mb-2">{{missing_for_2_weeks}}</span>
+                                    <span class="font-weight-light">Missing for 2 weeks</span>
+                                </div>
+                              </a>
+                                <div class="h2 text-muted">
+                                    <i class="icon icon-people" style="color:green;"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row ">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                Attendance
+                                {{attendance}}
+                            </div>
+
+                            <div class="card-body p-0">
+                                <div class="p-4">
+                                    <canvas id="line-chart" width="100%" height="20"></canvas>
+                                </div>
+
+                                <div class="justify-content-around mt-4 p-4 bg-light d-flex border-top d-md-down-none">
+                                    <div class="text-center">
+                                        <div class="text-muted small">Total Males</div>
+                                        <div>{{total_males}}</div>
+                                    </div>
+
+                                    <div class="text-center">
+                                        <div class="text-muted small">Total Females</div>
+                                        <div>{{total_females}}</div>
+                                    </div>
+
+                                    <div class="text-center hidden">
+                                        <div class="text-muted small">Page Views</div>
+                                        <div>957,565 Pages (50%)</div>
+                                    </div>
+
+                                    <div class="text-center hidden" >
+                                        <div class="text-muted small">Total Downloads</div>
+                                        <div>957,565 Files (100 TB)</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<script>
+$(document).ready(function () {
+  var labels = new Array();
+  var count = new Array();
+  $.ajax({
+           type: "GET",
+           dataType: "json",
+           url: "/dashboard/rest/attendancetrend/",
+           success: function(data){
+              data.attendance.forEach( function(entry){
+                console.log(entry.date);
+                labels.push(entry.date);
+                count.push(entry.total_count);
+              });
+
+              var lineChart = $('#line-chart');
+              var attendance = "{{attendance}}"
+              //var attendance =  JSON.parse("{{attendance}}".replace("&#39;", "\""));
+              console.log(labels);
+              if (lineChart.length > 0) {
+                  // for (var i = 0; i < attendance.length; i++) {
+                  //  console.log(attendance[i]);
+                  // }
+                  new Chart(lineChart, {
+                      type: 'line',
+                      data: {
+                          labels: labels,
+                          datasets: [{
+                              label: 'Users',
+                              data: count,
+                              backgroundColor: 'rgba(66, 165, 245, 0.5)',
+                              borderColor: '#2196F3',
+                              borderWidth: 1
+                          }]
+                      },
+                      options: {
+                          legend: {
+                              display: false
+                          },
+                          scales: {
+                              yAxes: [{
+                                  ticks: {
+                                      beginAtZero: true
+                                  }
+                              }]
+                          }
+                      }
+                  });
+              }
+            }
+          });
+
+  });
+</script>
+{% endblock %}
