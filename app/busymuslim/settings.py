@@ -125,7 +125,7 @@ WSGI_APPLICATION = 'busymuslim.wsgi.application'
 DATABASES = {
      'default': {
          'ENGINE': 'django.db.backends.postgresql',
-         'NAME': 'busymuslim',
+         'NAME': 'busybees',
          'HOST': os.environ['TAMKEEN_DB_HOST'],
          'USER': os.environ['TAMKEEN_DB_USER'],
          'PASSWORD': os.environ['TAMKEEN_DB_PASSWORD']
