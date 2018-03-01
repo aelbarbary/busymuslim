@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from busymuslimapp.models import *
+from busybeesapp.models import *
 from django.contrib.admin.views.decorators import staff_member_required
 from django.db import connection
 import json

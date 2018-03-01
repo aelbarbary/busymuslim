@@ -59,7 +59,7 @@ body{
 }
 .top-searchbar {
 	float: left;
-	width: 46%;
+	width: 40%;
 	position: relative;
 	margin-left: 2em;
 }
@@ -190,7 +190,7 @@ a.boxclose{
 	-moz-border-radius:30em;
 	-o-border-radius:30em;
 	vertical-align:middle;
-	
+
 }
 /*--//userinfo--*/
 /*----start-post-grids----*/
@@ -210,11 +210,11 @@ a.boxclose{
 .rateit span{
 	height:18px;
 	width:76px;
-	background:url(../images/start-rate.png) no-repeat 0px 0px; 
+	background:url(../images/start-rate.png) no-repeat 0px 0px;
 	display:inline-block;
 }
 .rateit span:hover{
-	background:url(../images/start-rateh.png) no-repeat 0px 0px; 
+	background:url(../images/start-rateh.png) no-repeat 0px 0px;
 }
 .post-basic-info{
 	padding: 7% 7% 5% 7%;
@@ -772,10 +772,10 @@ span.mail a:hover{
 		padding: 0.5em 0 0;
 	}
 	.artical-content p:nth-child(1){
-		display:none;	
+		display:none;
 	}
 	.userinfo {
-		width: 17%;
+		width: 30%;
 	}
 	.artical-content p {
 		font: normal 14px/22px 'Open Sans', sans-serif,Helvetica,sans-serif;
@@ -863,7 +863,7 @@ span.mail a:hover{
 		padding: 0.5em 0 0;
 	}
 	.artical-content p:nth-child(1){
-		display:none;	
+		display:none;
 	}
 	.userinfo {
 		display:none;
@@ -987,7 +987,7 @@ span.mail a:hover{
 		display:block;
 	}
 	.artical-content p:nth-child(1){
-		display:none;	
+		display:none;
 	}
 	.userinfo {
 		display:none;
@@ -1120,7 +1120,7 @@ span.mail a:hover{
 		display:block;
 	}
 	.artical-content p:nth-child(1){
-		display:none;	
+		display:none;
 	}
 	.userinfo {
 		display:none;
