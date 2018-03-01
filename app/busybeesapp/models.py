@@ -17,6 +17,7 @@ class Profile(AbstractUser):
         ('M', 'Male'),
         ('F', 'Female'),
     )
+    nick_name = models.CharField(max_length=20, blank=True)
     phone = models.CharField(max_length=20, blank=True)
     dob = models.DateField(max_length=8)
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES, default='M')
