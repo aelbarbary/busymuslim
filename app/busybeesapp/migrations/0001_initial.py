@@ -33,8 +33,6 @@ class Migration(migrations.Migration):
                 ('dob', models.DateField(max_length=8)),
                 ('gender', models.CharField(choices=[('M', 'Male'), ('F', 'Female')], default='M', max_length=1)),
                 ('photo', models.ImageField(default='profile_pics/default.png', upload_to='profile_pics')),
-                ('groups', models.ManyToManyField(blank=True, help_text='The groups this user belongs to. A user will get all permissions granted to each of their groups.', related_name='user_set', related_query_name='user', to='auth.Group', verbose_name='groups')),
-                ('user_permissions', models.ManyToManyField(blank=True, help_text='Specific permissions for this user.', related_name='user_set', related_query_name='user', to='auth.Permission', verbose_name='user permissions')),
             ],
             options={
                 'verbose_name': 'user',
