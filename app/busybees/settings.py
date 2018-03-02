@@ -23,7 +23,7 @@ EMAIL_PORT = 587
 SEND_BROKEN_LINK_EMAILS = True
 CORS_ORIGIN_ALLOW_ALL = True
 
-AUTH_USER_MODEL = 'busybeesapp.Profile'
+# AUTH_USER_MODEL = 'busybeesapp.Profile'
 
 boto3_session = Session(aws_access_key_id=os.environ['ACCESS_KEY'],
                         aws_secret_access_key=os.environ['SECRET_KEY'],

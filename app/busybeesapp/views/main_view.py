@@ -30,28 +30,28 @@ def index(request):
     context = { }
     return render(request, 'index.html', context)
 
-class Register(CreateView):
-    success_url = '/'
-    template_name = 'registration/registration_form.html'
-    model = Profile
-    form_class = NewProfileForm
-    def form_valid(self, form):
-        response = super(Register, self).form_valid(form)
-        instance = self.object
-        user_name = '%s.%s' % (instance.first_name.replace(" ", "").lower(), instance.last_name.replace(" ", "").lower())
-        password = instance.password
-        # password = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(8))
-        print(instance)
-        count = Profile.objects.filter(username=user_name).count()
-
-        subject = 'Your account was created successfully!'
-        print(subject)
-        recepients = [instance.email]
-
-        message = "%s, Thank you for registering. your user information is listed below. \n" % (instance.first_name)
-        message = "User Name: %s \n" % user_name
-        message += "Password: %s\n" % password
-
-        EmailSender(instance, subject, message, recepients).start()
-
-        return response
+# class Register(CreateView):
+#     success_url = '/'
+#     template_name = 'registration/registration_form.html'
+#     model = Profile
+#     form_class = NewProfileForm
+#     def form_valid(self, form):
+#         response = super(Register, self).form_valid(form)
+#         instance = self.object
+#         user_name = '%s.%s' % (instance.first_name.replace(" ", "").lower(), instance.last_name.replace(" ", "").lower())
+#         password = instance.password
+#         # password = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(8))
+#         print(instance)
+#         count = Profile.objects.filter(username=user_name).count()
+#
+#         subject = 'Your account was created successfully!'
+#         print(subject)
+#         recepients = [instance.email]
+#
+#         message = "%s, Thank you for registering. your user information is listed below. \n" % (instance.first_name)
+#         message = "User Name: %s \n" % user_name
+#         message += "Password: %s\n" % password
+#
+#         EmailSender(instance, subject, message, recepients).start()
+#
+#         return response

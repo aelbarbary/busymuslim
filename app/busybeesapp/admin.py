@@ -4,8 +4,8 @@ from .forms import *
 
 admin.site.site_header = 'busybees admin'
 
-class ProfileAdmin(admin.ModelAdmin):
-    model = Profile
-
-
-admin.site.register(Profile, ProfileAdmin)
+# class ProfileAdmin(admin.ModelAdmin):
+#     model = Profile
+#
+#
+# admin.site.register(Profile, ProfileAdmin)

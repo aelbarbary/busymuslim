@@ -37,10 +37,10 @@ urlpatterns = [
     #
     # Accounts management Endpoints
     # url(r'^accounts/register/thanks/', user_view.registration_thanks, name='registration_thanks'),
-    url(r'^accounts/', include('registration.backends.simple.urls')),
+    # url(r'^accounts/', include('registration.backends.simple.urls')),
     # url(r'^profile/$', user_view.profile, name='profile'),
     # url(r'^password/change/$', user_view.change_password, name='change_password'),
-    url(r'^register/$', main_view.Register.as_view(), name='register'),
+    # url(r'^register/$', main_view.Register.as_view(), name='register'),
     # url(r'^rest/members/$', user_view.members, name='members'),
     # url(r'^members/$', user_view.show_members, name='show_members'),
 ]
