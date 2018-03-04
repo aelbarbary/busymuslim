@@ -6,7 +6,6 @@ from django.contrib.auth.decorators import login_required
 from .  import forms
 from busybeesapp.views import *
 
-app_name = 'busybeesapp'
 urlpatterns = [
 
     # #main
@@ -37,7 +36,7 @@ urlpatterns = [
     #
     # Accounts management Endpoints
     # url(r'^accounts/register/thanks/', user_view.registration_thanks, name='registration_thanks'),
-    # url(r'^accounts/', include('registration.backends.simple.urls')),
+    url(r'^accounts/', include('registration.backends.hmac.urls')),
     # url(r'^profile/$', user_view.profile, name='profile'),
     # url(r'^password/change/$', user_view.change_password, name='change_password'),
     # url(r'^register/$', main_view.Register.as_view(), name='register'),

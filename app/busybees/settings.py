@@ -13,18 +13,18 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 import os
 from boto3.session import Session
 
-ADMINS =(('admin','busybees@gmail.com'),)
+ADMINS =(('admin','busymuslimbees@gmail.com'),)
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 SERVER_EMAIL = 'xyz@gmail.com'
-EMAIL_HOST_USER = os.environ['TAMKEEN_EMAIL']
-EMAIL_HOST_PASSWORD = os.environ['TAMKEEN_PASSWORD']
+EMAIL_HOST_USER = os.environ['BUSYBEES_EMAIL_USERNAME']
+EMAIL_HOST_PASSWORD = os.environ['BUSYBEES_EMAIL_PASSWORD']
 EMAIL_PORT = 587
 SEND_BROKEN_LINK_EMAILS = True
 CORS_ORIGIN_ALLOW_ALL = True
 
 # AUTH_USER_MODEL = 'busybeesapp.Profile'
-
+ACCOUNT_ACTIVATION_DAYS=7
 boto3_session = Session(aws_access_key_id=os.environ['ACCESS_KEY'],
                         aws_secret_access_key=os.environ['SECRET_KEY'],
                         region_name='us-west-2')
@@ -126,9 +126,9 @@ DATABASES = {
      'default': {
          'ENGINE': 'django.db.backends.postgresql',
          'NAME': 'busybees',
-         'HOST': os.environ['TAMKEEN_DB_HOST'],
-         'USER': os.environ['TAMKEEN_DB_USER'],
-         'PASSWORD': os.environ['TAMKEEN_DB_PASSWORD']
+         'HOST': os.environ['BUSYBEES_DB_HOST'],
+         'USER': os.environ['BUSYBEES_DB_USER'],
+         'PASSWORD': os.environ['BUSYBEES_DB_PASSWORD']
      }
  }
 
@@ -164,8 +164,8 @@ USE_TZ = True
 
 AWS_STORAGE_BUCKET_NAME = 'busybees'
 AWS_S3_HOST = "s3-us-west-2.amazonaws.com"
-AWS_ACCESS_KEY_ID = os.environ['TAMKEEN_S3_ACCESS_KEY']
-AWS_SECRET_ACCESS_KEY = os.environ['TAMKEEN_S3_SECRET_KEY']
+AWS_ACCESS_KEY_ID = os.environ['BUSYBEES_S3_ACCESS_KEY']
+AWS_SECRET_ACCESS_KEY = os.environ['BUSYBEES_S3_SECRET_KEY']
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
 # STATIC_ROOT = os.path.join(BASE_DIR, "/static")
